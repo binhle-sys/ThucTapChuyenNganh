@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0f0d0b" />
+    <meta name="description" content="Barber House - Cắt tóc nam chuẩn chỉnh, tạo kiểu, cạo râu, chăm sóc râu tóc chuyên nghiệp tại Việt Nam" />
+    <title>Barber House | Cắt tóc nam chuẩn chỉnh</title>
+    <link rel="icon" href="/placeholder.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" th:href="@{public/styles.css}" />
+</head>
+<body class="antialiased bg-background text-foreground">
+<!-- Header -->
+<header class="fixed inset-x-0 top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/70 dark:bg-neutral-900/60 border-b border-border">
+    <div class="inner max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="h-16 flex items-center justify-between">
+            <a href="/" class="brand group inline-flex items-center gap-3">
+                <span class="logo inline-flex h-10 w-10 items-center justify-center rounded-md bg-gradient-to-br from-amber-400 to-amber-600 text-black shadow-sm">✂</span>
+                <div>
+                    <p class="text-sm tracking-widest text-muted-foreground">BARBER HOUSE</p>
+                    <p class="-mt-1 text-lg font-semibold">Chất riêng phái mạnh</p>
+                </div>
+            </a>
+            <nav class="nav hidden md:flex items-center gap-6 text-sm font-medium">
+                <a th:href="@{/services}" class="hover:text-accent-foreground/90">Dịch vụ</a>
+                <a th:href="@{/pricing}" class="hover:text-accent-foreground/90">Bảng giá</a>
+                <a th:href="@{/gallery}" class="hover:text-accent-foreground/90">Bộ sưu tập</a>
+                <a th:href="@{/contact}" class="hover:text-accent-foreground/90">Liên hệ</a>
+                <a th:href="@{/shop}" class="hover:text-accent-foreground/90">Cửa hàng</a>
+                <a th:href="@{/cart}" class="hover:text-accent-foreground/90">Giỏ</a>
+            </nav>
+            <div class="header-actions flex items-center gap-3">
+                <a th:href="@{/booking}" class="btn btn-primary hidden sm:inline-flex">Đặt lịch</a>
+                <button id="menuButton" class="menu-btn md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-border">
+                    <span class="sr-only">Mở menu</span>
+                    <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="md:hidden hidden pb-4">
+            <div class="grid gap-2">
+                <a href="/services.html" class="px-3 py-2 rounded hover:bg-muted">Dịch vụ</a>
+                <a href="/pricing.html" class="px-3 py-2 rounded hover:bg-muted">Bảng giá</a>
+                <a href="/gallery.html" class="px-3 py-2 rounded hover:bg-muted">Bộ sưu tập</a>
+                <a href="/shop.html" class="px-3 py-2 rounded hover:bg-muted">Cửa hàng</a>
+                <a href="/contact.html" class="px-3 py-2 rounded hover:bg-muted">Liên hệ</a>
+                <a href="/cart.html" class="px-3 py-2 rounded hover:bg-muted">Giỏ</a>
+                <a href="/booking.html" class="px-3 py-2 rounded bg-primary text-primary-foreground">Đặt lịch</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div layout:fragment="main"></div>
+<!-- Footer -->
+<footer class="border-t border-border py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-md bg-amber-500 text-black">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.121 14.121a3 3 0 1 0 4.243 4.243m-4.243-4.243 6.364-6.364M9.879 9.879a3 3 0 1 1-4.243-4.243m4.243 4.243 6.364 6.364" />
+              </svg>
+            </span>
+                <span class="font-semibold">Barber House</span>
+            </div>
+            <p class="text-sm text-muted-foreground">© <span id="year"></span> Barber House. All rights reserved.</p>
+            <div class="flex gap-4 text-sm">
+                <a th:href="@{/services}" class="hover:underline">Dịch vụ</a>
+                <a th:href="@{/pricing}" class="hover:underline">Bảng giá</a>
+                <a th:href="@{/contact}" class="hover:underline">Liên hệ</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 right-6 z-50 hidden">
+    <div class="rounded-lg bg-emerald-600 text-white px-4 py-3 shadow-lg">Đặt lịch thành công! Chúng tôi sẽ liên hệ xác nhận.</div>
+</div>
+
+<script type="module" th:src="@{JS/barber.js}"></script>
+</body>
+</html>
+
+</body>
+</html>

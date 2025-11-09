@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="https://www.ultraq.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div style="margin-top:12px">
+            <label for="pname">Tên</label>
+            <input id="pname" name="pname" style="width:100%;padding:8px;margin-top:6px;border:1px solid var(--admin-border);border-radius:6px" />
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:8px">
+            <input id="psku" name="psku" placeholder="SKU" style="flex:1;padding:8px;border:1px solid var(--admin-border);border-radius:6px" />
+            <input id="pprice" name="pprice" placeholder="Giá" style="width:160px;padding:8px;border:1px solid var(--admin-border);border-radius:6px" />
+        </div>
+
+        <div style="margin-top:12px">
+            <label for="pstock">Tồn kho</label>
+            <input id="pstock" name="pstock" type="number" min="0" style="width:120px;padding:8px;border:1px solid var(--admin-border);border-radius:6px;margin-top:6px" />
+        </div>
+
+        <div style="margin-top:12px;text-align:right">
+            <button class="btn ghost" id="modalClose">Hủy</button>
+            <button class="btn" id="modalSave">Lưu</button>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

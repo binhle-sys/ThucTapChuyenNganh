@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="vi"  xmlns:layout="https://www.ultraq.nz/thymeleaf/layout"
+      layout:decorate="~{home/layout}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Đặt lịch - Barber House</title>
+    <link rel="icon" href="/placeholder.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body class="antialiased bg-background text-foreground">
+<div layout:fragment="main">
+<main class="pt-24 md:pt-28">
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h1 class="text-3xl font-extrabold text-center">Đặt lịch nhanh</h1>
+        <p class="mt-3 text-center text-muted-foreground">Điền thông tin bên dưới, chúng tôi sẽ xác nhận trong vòng 5 phút.</p>
+
+        <form id="bookingForm" class="mt-8 rounded-xl border border-border bg-card p-6 grid grid-cols-1 gap-4">
+            <div class="grid gap-1">
+                <label for="name" class="text-sm">Họ và tên</label>
+                <input id="name" name="name" required placeholder="Nguyễn Văn A" class="h-11 rounded-md border border-input bg-background px-3 focus:outline-none focus:ring-2 focus:ring-ring" />
+            </div>
+            <div class="grid gap-1">
+                <label for="phone" class="text-sm">Số điện thoại</label>
+                <input id="phone" name="phone" type="tel" required placeholder="0901 234 567" class="h-11 rounded-md border border-input bg-background px-3 focus:outline-none focus:ring-2 focus:ring-ring" />
+            </div>
+            <div class="grid gap-1">
+                <label for="service" class="text-sm">Dịch vụ</label>
+                <select id="service" name="service" class="h-11 rounded-md border border-input bg-background px-3 focus:outline-none focus:ring-2 focus:ring-ring">
+                    <option value="Cắt tóc">Cắt tóc</option>
+                    <option value="Fade + Gội + Styling">Fade + Gội + Styling</option>
+                    <option value="Cạo râu">Cạo râu</option>
+                    <option value="Uốn/Duỗi">Uốn/Duỗi</option>
+                    <option value="Nhuộm">Nhuộm</option>
+                </select>
+            </div>
+            <div class="grid gap-1 md:grid-cols-2">
+                <div class="grid gap-1">
+                    <label for="date" class="text-sm">Ngày</label>
+                    <input id="date" name="date" type="date" class="h-11 rounded-md border border-input bg-background px-3 focus:outline-none focus:ring-2 focus:ring-ring" />
+                </div>
+                <div class="grid gap-1">
+                    <label for="time" class="text-sm">Giờ</label>
+                    <input id="time" name="time" type="time" class="h-11 rounded-md border border-input bg-background px-3 focus:outline-none focus:ring-2 focus:ring-ring" />
+                </div>
+            </div>
+            <div class="grid gap-1">
+                <label for="note" class="text-sm">Ghi chú (tuỳ chọn)</label>
+                <textarea id="note" name="note" rows="3" class="rounded-md border border-input bg-background px-3 py-2 focus:outline-none focus:ring-2 focus:ring-ring" placeholder="Ví dụ: Tóc mỏng, muốn layer nhẹ..."></textarea>
+            </div>
+            <button class="mt-2 inline-flex items-center justify-center rounded-md bg-primary px-5 py-3 text-primary-foreground font-medium hover:opacity-95">Xác nhận đặt lịch</button>
+            <p id="formMessage" class="hidden text-sm"></p>
+        </form>
+
+        <div class="mt-8 text-center">
+            <a href="/" class="px-6 py-3 rounded-md border border-border">Về trang chủ</a>
+        </div>
+    </section>
+</main>
+</div>
+
+
+<script type="module" src="/client/barber.js"></script>
+</body>
+</html>

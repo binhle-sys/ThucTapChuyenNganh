@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin - Dashboard</title>
+
+    <!-- Nạp CSS trong /static/public -->
+    <link rel="stylesheet" th:href="@{/public/styles.css}">
+    <link rel="stylesheet" th:href="@{/public/Admin-style.css}">
+
+</head>
+<body class="bg-background text-foreground">
+<div class="admin-app">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" aria-label="sidebar">
+        <div class="brand">
+            <div class="logo">✂</div>
+            <div>
+                <div class="title">BARBER HOUSE</div>
+                <div class="hint">Admin</div>
+            </div>
+        </div>
+        <div class="group-title">Quản lý</div>
+        <nav>
+            <a href="#" class="item active">Dashboard</a>
+            <a th:href="@{/admin/product}" class="item">Sản phẩm</a>
+            <a href="#" class="item">Nhập kho</a>
+            <a href="#" class="item">Xuất kho</a>
+            <a href="#" class="item">Lịch sử</a>
+        </nav>
+    </aside>
+
+    <div class="admin-main">
+        <header class="admin-topbar" role="banner">
+            <div class="left">
+                <button class="sidebar-toggle" id="toggleSidebar" aria-label="Toggle sidebar">☰</button>
+                <div class="search" role="search">
+                    <input class="search-input" placeholder="Tìm sản phẩm, mã, ghi chú..." aria-label="Tìm kiếm" />
+                </div>
+            </div>
+            <div class="actions">
+                <div class="badge">Admin</div>
+            </div>
+        </header>
+
+        <div layout:fragment="content"></div>
+
+        <footer style="border-top:1px solid var(--border);padding:18px 28px;background:transparent;margin-top:auto">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+                <div class="hint">© <span id="year"></span> Barber House</div>
+                <div class="hint">Phiên bản quản trị 1.0</div>
+            </div>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="https://www.ultraq.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- templates/admin/dashboard.html -->
+<div layout:fragment="content">
+    <main class="admin-content" role="main">
+        <section class="kpi-row" aria-label="kpis">
+            <div class="kpi">
+                <div class="kpi-label">Tổng sản phẩm</div>
+                <div class="kpi-value">128</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">Tồn kho</div>
+                <div class="kpi-value">3,420</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">Xuất kho hôm nay</div>
+                <div class="kpi-value">24</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">Lượt truy cập</div>
+                <div class="kpi-value">1.2K</div>
+            </div>
+        </section>
+
+        <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:18px">
+            <div>
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                    <h3>Hoạt động gần đây</h3>
+                    <div>
+                        <button id="btnExport" class="action-btn">Xuất báo cáo</button>
+                        <button id="btnAddProduct" class="action-btn primary">Thêm sản phẩm</button>
+                    </div>
+                </div>
+
+                <div class="table-card" style="margin-top:12px">
+                    <table class="table" aria-label="recent-activity">
+                        <thead>
+                        <tr><th>Thời gian</th><th>Sự kiện</th><th>Người thực hiện</th></tr>
+                        </thead>
+                        <tbody id="activityBody">
+                        <tr><td>10:34</td><td>Nhập 20 Sáp Classic</td><td>Admin</td></tr>
+                        <tr><td>09:12</td><td>Xuất 3 Sáp Matte</td><td>Admin</td></tr>
+                        <tr><td>08:45</td><td>Thêm sản phẩm Strong Hold</td><td>Admin</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="margin-top:18px">
+                    <h3>Sản phẩm gần đây</h3>
+                    <div class="table-card" style="margin-top:12px">
+                        <table class="table">
+                            <thead>
+                            <tr><th>Tên</th><th>Giá</th><th>Tồn</th><th>Hành động</th></tr>
+                            </thead>
+                            <tbody id="productsBody">
+                            <tr><td>Classic Pomade</td><td>150.000đ</td><td>24</td>
+                                <td>
+                                    <button class="action-btn">Sửa</button>
+                                    <button class="action-btn">Xóa</button>
+                                </td>
+                            </tr>
+                            <tr><td>Strong Hold</td><td>170.000đ</td><td>12</td>
+                                <td>
+                                    <button class="action-btn">Sửa</button>
+                                    <button class="action-btn">Xóa</button>
+                                </td>
+                            </tr>
+                            <tr><td>Matte Texture</td><td>160.000đ</td><td>6</td>
+                                <td>
+                                    <button class="action-btn">Sửa</button>
+                                    <button class="action-btn">Xóa</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <aside>
+                <div class="stock-card">
+                    <h4>Xu hướng tồn kho</h4>
+                    <div class="stock-qty">Tổng: 3,420</div>
+                    <div class="hint" style="margin-top:8px">Sản phẩm sắp hết: Matte Texture (6)</div>
+                </div>
+
+                <div class="stock-card" style="margin-top:12px">
+                    <h4>Nhanh</h4>
+                    <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+                        <button class="action-btn primary" id="quickIn">Nhập kho nhanh</button>
+                        <button class="action-btn" id="quickOut">Xuất kho nhanh</button>
+                    </div>
+                </div>
+
+                <div class="stock-card" style="margin-top:12px">
+                    <h4>Thống kê</h4>
+                    <div style="margin-top:8px">Phiếu nhập: 24<br/>Phiếu xuất: 16</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>

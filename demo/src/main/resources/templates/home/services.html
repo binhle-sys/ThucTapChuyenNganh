@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="vi" xmlns:layout="https://www.ultraq.nz/thymeleaf/layout"
+      layout:decorate="~{home/layout}" >
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dịch vụ - Barber House</title>
+    <link rel="icon" href="/placeholder.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="antialiased bg-background text-foreground">
+<div layout:fragment="main">
+<main class="pt-24 md:pt-28">
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h1 class="text-4xl font-extrabold text-center">Dịch vụ chuyên nghiệp</h1>
+        <p class="mt-3 text-center text-muted-foreground">Chi tiết các dịch vụ, thời gian và những gì đi kèm để bạn yên tâm khi đặt lịch.</p>
+
+        <div class="mt-10 grid gap-6 sm:grid-cols-2">
+            <article class="rounded-xl border border-border bg-card p-6">
+                <h3 class="text-xl font-semibold">Cắt tóc chuẩn</h3>
+                <p class="mt-2 text-sm text-muted-foreground">Tư vấn kiểu tóc phù hợp, cắt tỉa chuẩn xác, tạo kiểu hoàn thiện.</p>
+                <p class="mt-4 font-bold text-amber-500">150.000đ</p>
+                <a href="/#booking" class="mt-4 inline-block px-4 py-2 rounded-md bg-amber-500 text-black">Đặt lịch</a>
+            </article>
+
+            <article class="rounded-xl border border-border bg-card p-6">
+                <h3 class="text-xl font-semibold">Fade / Gội / Styling</h3>
+                <p class="mt-2 text-sm text-muted-foreground">Fade chuẩn, gội thư giãn và sấy tạo kiểu theo phong cách bạn chọn.</p>
+                <p class="mt-4 font-bold text-amber-500">220.000đ</p>
+                <a href="/#booking" class="mt-4 inline-block px-4 py-2 rounded-md bg-amber-500 text-black">Đặt lịch</a>
+            </article>
+
+            <article class="rounded-xl border border-border bg-card p-6">
+                <h3 class="text-xl font-semibold">Cạo râu dưỡng da</h3>
+                <p class="mt-2 text-sm text-muted-foreground">Kỹ thuật cạo truyền thống kết hợp liệu trình dưỡng da.</p>
+                <p class="mt-4 font-bold text-amber-500">120.000đ</p>
+                <a href="/#booking" class="mt-4 inline-block px-4 py-2 rounded-md bg-amber-500 text-black">Đặt lịch</a>
+            </article>
+
+            <article class="rounded-xl border border-border bg-card p-6">
+                <h3 class="text-xl font-semibold">Uốn / Duỗi</h3>
+                <p class="mt-2 text-sm text-muted-foreground">Tạo texture tự nhiên hoặc duỗi tóc gọn gàng, phù hợp từng kiểu tóc.</p>
+                <p class="mt-4 font-bold text-amber-500">Từ 350.000đ</p>
+                <a href="/#booking" class="mt-4 inline-block px-4 py-2 rounded-md bg-amber-500 text-black">Đặt lịch</a>
+            </article>
+        </div>
+
+        <div class="mt-12 text-center">
+            <a th:href="@{/pricing}" class="px-6 py-3 rounded-md border border-border">Xem bảng giá chi tiết</a>
+            <a href="/" class="ml-3 px-6 py-3 rounded-md bg-primary text-primary-foreground">Về trang chủ</a>
+        </div>
+    </section>
+</main>
+</div>
+
+<script type="module" src="/client/barber.js"></script>
+</body>
+</html>

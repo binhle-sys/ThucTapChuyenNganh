@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="vi"  xmlns:layout="https://www.ultraq.nz/thymeleaf/layout"
+      layout:decorate="~{home/layout}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bảng giá - Barber House</title>
+    <link rel="icon" href="/placeholder.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="antialiased bg-background text-foreground">
+<div layout:fragment="main">
+<main class="pt-24 md:pt-28">
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h1 class="text-4xl font-extrabold text-center">Bảng giá minh bạch</h1>
+        <p class="mt-3 text-center text-muted-foreground">Chọn gói phù hợp với nhu cầu của bạn. Cam kết giá tốt và dịch vụ chuyên nghiệp.</p>
+
+        <div class="mt-10 grid lg:grid-cols-2 gap-8">
+            <div class="rounded-xl border border-border p-6">
+                <table class="w-full text-sm">
+                    <tbody>
+                    <tr class="divide-x divide-border">
+                        <td class="p-4">Cắt tóc chuẩn</td>
+                        <td class="p-4 text-right">150.000đ</td>
+                    </tr>
+                    <tr class="divide-x divide-border bg-background">
+                        <td class="p-4">Cạo râu & chăm sóc</td>
+                        <td class="p-4 text-right">120.000đ</td>
+                    </tr>
+                    <tr class="divide-x divide-border">
+                        <td class="p-4">Uốn/Duỗi</td>
+                        <td class="p-4 text-right">350.000đ+</td>
+                    </tr>
+                    <tr class="divide-x divide-border bg-background">
+                        <td class="p-4">Nhuộm cao cấp</td>
+                        <td class="p-4 text-right">500.000đ+</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <aside class="rounded-xl border border-border p-6 bg-card">
+                <h3 class="text-xl font-semibold">Ưu đãi thành viên</h3>
+                <p class="mt-2 text-muted-foreground">Nhận thẻ thành viên để tích điểm, giảm giá và ưu tiên lịch hẹn.</p>
+                <ul class="mt-4 grid gap-3 text-sm">
+                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span> Giảm 10% cho mọi dịch vụ</li>
+                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span> Quà tặng sinh nhật</li>
+                    <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span> Ưu tiên đặt lịch cuối tuần</li>
+                </ul>
+                <a href="/#booking" class="mt-6 inline-flex w-full items-center justify-center rounded-md bg-amber-500 px-5 py-3 text-black font-medium">Đặt lịch ngay</a>
+            </aside>
+        </div>
+
+        <div class="mt-10 text-center">
+            <a th:href="@{/services}" class="px-6 py-3 rounded-md border border-border">Xem dịch vụ</a>
+            <a href="/" class="ml-3 px-6 py-3 rounded-md bg-primary text-primary-foreground">Về trang chủ</a>
+        </div>
+    </section>
+</main>
+</div>
+<script type="module" src="/client/barber.js"></script>
+</body>
+</html>

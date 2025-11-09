@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="vi" xmlns:layout="https://www.ultraq.nz/thymeleaf/layout"
+      layout:decorate="~{home/layout}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Giỏ hàng - Barber House</title>
+    <link rel="icon" href="/placeholder.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="antialiased bg-background text-foreground">
+<div layout:fragment="main">
+<main class="pt-24 md:pt-28">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-extrabold">Giỏ hàng của bạn</h1>
+            <p class="mt-3 text-muted-foreground max-w-2xl mx-auto">Kiểm tra sản phẩm, chỉnh số lượng hoặc xóa trước khi tiến hành thanh toán.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2">
+                <div id="cartList" class="space-y-4">
+                    <!-- Items will be rendered here by JS -->
+                </div>
+                <div id="cartEmpty" class="mt-8 text-center text-muted-foreground hidden">Giỏ hàng trống. <a th:href="@{/shop}" class="underline">Mua ngay</a></div>
+            </div>
+
+            <aside class="rounded-xl border border-border bg-card p-6">
+                <h3 class="text-lg font-semibold">Tóm tắt đơn hàng</h3>
+                <div class="mt-4 flex items-center justify-between">
+                    <span class="text-muted-foreground">Tạm tính</span>
+                    <span id="cartSubtotal" class="font-bold text-amber-500">0đ</span>
+                </div>
+                <div class="mt-6">
+                    <button id="checkoutBtn" class="w-full inline-flex items-center justify-center rounded-md bg-amber-500 px-4 py-3 text-black font-semibold">Thanh toán</button>
+                </div>
+                <div class="mt-3 text-sm text-muted-foreground">Thanh toán khi nhận hàng (COD) tạm thời.</div>
+            </aside>
+        </div>
+    </section>
+</main>
+</div>
+<script type="module" src="/client/barber.js"></script>
+</body>
+</html>

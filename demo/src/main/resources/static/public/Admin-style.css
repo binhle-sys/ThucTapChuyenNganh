@@ -1,0 +1,134 @@
+/* Admin panel styles for Barber House (improved)
+   Relies on color variables defined in /styles.css (--bg, --fg, --card, --border, --muted, --accent)
+   This file intentionally uses selectors that match admin.html structure and adds responsive behavior.
+*/
+:root{
+  --admin-sidebar-width:260px;
+  --admin-header-height:64px;
+  --admin-radius:10px;
+}
+
+/* Base layout */
+html,body{height:100%;margin:0}
+.admin-app{min-height:100vh;display:flex;background:var(--bg);color:var(--fg);font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+
+/* Sidebar */
+.admin-sidebar{width:var(--admin-sidebar-width);background:linear-gradient(180deg, rgba(11,18,32,0.98), rgba(11,18,32,0.92));border-right:1px solid var(--border);padding:20px 14px;position:fixed;inset:0 auto 0 0;display:flex;flex-direction:column;z-index:60;transition:left .22s ease, width .2s ease}
+.admin-sidebar .brand{display:flex;align-items:center;gap:12px;padding:6px 2px;margin-bottom:18px}
+.admin-sidebar .logo{height:44px;width:44px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),#fb7185);color:#071422;font-weight:800}
+.admin-sidebar .title{font-weight:800}
+.admin-sidebar .hint{font-size:12px;color:var(--muted)}
+.admin-sidebar .group-title{margin-top:14px;margin-bottom:6px;color:var(--muted);font-size:12px;padding-left:6px}
+.admin-sidebar nav{display:flex;flex-direction:column;gap:6px}
+.admin-sidebar a.item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;color:var(--fg);text-decoration:none;font-weight:600}
+.admin-sidebar a.item:hover{background:rgba(255,255,255,0.02)}
+.admin-sidebar a.item.active{background:linear-gradient(90deg, rgba(245,158,11,0.12), rgba(249,115,22,0.06));box-shadow:inset 0 0 0 1px rgba(255,255,255,0.02)}
+
+/* Collapsed sidebar on small screens */
+.admin-sidebar.open{left:0}
+@media(max-width:760px){
+  .admin-sidebar{left:-320px;position:fixed}
+  .admin-sidebar.open{left:0}
+}
+
+/* Main area */
+.admin-main{margin-left:var(--admin-sidebar-width);flex:1;display:flex;flex-direction:column;min-height:100vh}
+
+/* Topbar */
+.admin-topbar{height:var(--admin-header-height);display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid var(--border);background:linear-gradient(180deg, rgba(11,18,32,0.04), rgba(11,18,32,0.01));backdrop-filter:blur(4px)}
+.admin-topbar .left{display:flex;align-items:center;gap:16px}
+.sidebar-toggle{background:transparent;border:1px solid var(--border);padding:8px;border-radius:8px;color:var(--fg);cursor:pointer}
+.admin-topbar .search{width:420px;max-width:50%;display:flex;align-items:center;background:var(--card);border:1px solid var(--border);padding:8px;border-radius:8px}
+.admin-topbar input.search-input{background:transparent;border:0;outline:none;color:var(--fg);width:100%}
+.admin-topbar .actions{display:flex;align-items:center;gap:12px}
+.badge{background:var(--accent);color:#071422;padding:6px 12px;border-radius:999px;font-weight:800}
+
+/* Content */
+.admin-content{padding:22px}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.kpi{background:var(--card);border:1px solid var(--border);padding:18px;border-radius:var(--admin-radius);display:flex;flex-direction:column;gap:8px}
+.kpi-label{color:var(--muted);font-size:13px}
+.kpi-value{font-size:20px;font-weight:800}
+
+/* Two column layout */
+.table-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px;overflow:auto}
+.table{width:100%;border-collapse:collapse;color:var(--fg)}
+.table thead th{font-weight:700;text-align:left;padding:12px 10px;border-bottom:1px solid rgba(255,255,255,0.03)}
+.table tbody td{padding:12px 10px;border-bottom:1px dashed rgba(255,255,255,0.02);vertical-align:middle}
+.table tbody tr:hover{background:rgba(255,255,255,0.01)}
+.action-btn{background:transparent;border:1px solid var(--border);padding:8px 12px;border-radius:8px;color:var(--fg);cursor:pointer}
+.action-btn.primary{background:linear-gradient(90deg,#f59e0b,#f97316);color:#071422;border:1px solid rgba(255,255,255,0.04)}
+
+.stock-card{background:var(--card);border:1px solid var(--border);padding:14px;border-radius:10px}
+.stock-qty{font-weight:800;color:var(--accent)}
+.hint{color:var(--muted);font-size:13px}
+
+/* Modal */
+.modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:flex;align-items:center;justify-content:center;z-index:120;padding:20px}
+.modal{background:var(--card);padding:18px;border-radius:12px;max-width:920px;width:100%;box-shadow:0 12px 40px rgba(2,6,23,0.6)}
+
+/* Forms */
+.form-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.form-field{display:flex;flex-direction:column;gap:6px}
+.input, textarea, select{background:transparent;border:1px solid var(--border);padding:10px;border-radius:8px;color:var(--fg)}
+
+/* Footer */
+.footer-admin{border-top:1px solid var(--border);padding:18px 28px;background:transparent;margin-top:auto}
+
+/* Responsive tweaks */
+@media(max-width:1100px){.kpi-row{grid-template-columns:repeat(2,1fr)}.admin-topbar .search{display:none}}
+@media(max-width:760px){.kpi-row{grid-template-columns:1fr}.admin-main{margin-left:0}.admin-sidebar{left:-320px}}
+
+/* small helpers */
+.center{text-align:center}
+
+/* Ensure high specificity so admin.css overrides other styles */
+.admin-app .admin-sidebar, .admin-app .admin-main, .admin-app .admin-topbar, .admin-app .admin-content{/* intentional */}
+/* --- ENHANCEMENT: Sidebar + Header visual depth --- */
+
+/* Sidebar cải thiện */
+.admin-sidebar {
+  background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
+  box-shadow: 2px 0 12px rgba(0,0,0,0.4);
+}
+
+.admin-sidebar a.item.active {
+  background: linear-gradient(90deg, rgba(245,158,11,0.25), rgba(249,115,22,0.1));
+  box-shadow: inset 0 0 0 1px rgba(245,158,11,0.4);
+}
+
+/* Header có bóng mờ và hiệu ứng chuyển */
+.admin-topbar {
+  background: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Thanh tìm kiếm nổi bật hơn */
+.admin-topbar .search {
+  background: rgba(255,255,255,0.04);
+  transition: background 0.2s ease;
+}
+.admin-topbar .search:focus-within {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Nút toggle sidebar hover */
+.sidebar-toggle:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+/* Nút "Admin" ở góc phải trông rõ hơn */
+.badge {
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+  color: white;
+}
+/* Fix: tránh nội dung bị che bởi header (topbar) */
+.admin-content {
+  padding-top: calc(var(--admin-header-height) + 20px);
+}
+
+/* Đảm bảo layout chính dịch xuống đủ */
+.admin-main {
+  margin-top: var(--admin-header-height);
+}

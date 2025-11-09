@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="vi" xmlns:layout="https://www.ultraq.nz/thymeleaf/layout"
+      layout:decorate="~{home/layout}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Đặt lịch - Barber House</title>
+    <link rel="icon" href="/placeholder.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="antialiased bg-background text-foreground">
+<div layout:fragment="main">
+    <section class="relative pt-24 md:pt-28 bg-gradient-to-b from-black/10 to-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold">Bộ sưu tập kiểu tóc</h1>
+                <p class="mt-3 text-muted-foreground max-w-2xl mx-auto">Những kiểu tóc thịnh hành và cá tính được thực hiện tại Barber House. Duyệt qua các phong cách để lấy cảm hứng cho lần đặt lịch tiếp theo.</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="pt-24 md:pt-28">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <h1 class="text-4xl font-extrabold text-center">Bộ sưu tập kiểu tóc</h1>
+            <p class="mt-3 text-center text-muted-foreground">Những kiểu tóc thịnh hành và cá tính được thực hiện tại Barber House.</p>
+
+            <div class="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+                <img class="rounded-lg object-cover h-48 w-full" src="https://cdn.shopify.com/s/files/1/0899/2676/2789/files/Quiff_Haircut.jpg?v=1746561695" alt="Barber style 1" />
+                <img class="rounded-lg object-cover h-48 w-full" src="https://photo.easysalon.vn/2024/05/701f07fe-ecbf-4506-87b1-2efa0e8a2d5b-202405231118112392891-IMG_4536.JPG" alt="Barber style 2" />
+                <img class="rounded-lg object-cover h-48 w-full" src="https://photo.easysalon.vn/2024/05/c698542c-f34f-40d9-bc79-d7ca0d7852e9-202405231118118997052-IMG_4667.JPG" alt="Barber style 3" />
+                <img class="rounded-lg object-cover h-48 w-full" src="https://photo.easysalon.vn/2024/10/8e9ed4c9-18ff-4963-8416-8b8c2ba4c202-IMG_0667.JPG" alt="Barber style 4" />
+                <img class="rounded-lg object-cover h-48 w-full" src="https://photo.easysalon.vn/2025/08/59ec0f35-5349-49ce-892d-14ed008a956f-IMG_7129.JPG" alt="Barber style 5" />
+                <img class="rounded-lg object-cover h-48 w-full" src="https://www.x-men.com.vn/wp-content/uploads/2020/10/toc-mohican.jpg" alt="Barber style 6" />
+                <img class="rounded-lg object-cover h-48 w-full" src="https://photo.easysalon.vn/2024/10/f463dc99-c422-438f-9927-60630fe9911e-IMG_9936.JPG" alt="Barber style 7" />
+                <img class="rounded-lg object-cover h-48 w-full" src="https://photo.easysalon.vn/2024/05/6c027d17-c0a4-4d52-8149-95c4ede46578-202405231126207825806-IMG_4954.JPG" alt="Barber style 8" />
+            </div>
+
+            <div class="mt-12 text-center">
+                <a th:href="@{/booking}" class="px-6 py-3 rounded-md bg-amber-500 text-black">Đặt lịch ngay</a>
+                <a th:href="@{/services}" class="ml-3 px-6 py-3 rounded-md border border-border">Xem dịch vụ</a>
+            </div>
+        </section>
+    </main>
+</div>
+</div>
+<script type="module" src="/client/barber.js"></script>
+</body>
+</html>

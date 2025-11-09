@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="https://www.ultraq.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <main class="admin-content">
+            <header class="admin-header">
+                <div>
+                    <h1 style="margin:0">Danh mục</h1>
+                    <div style="color:var(--admin-muted);font-size:13px">Quản lý danh mục sản phẩm</div>
+                </div>
+                <div>
+                    <button class="btn" id="openCatAdd">Thêm danh mục</button>
+                </div>
+            </header>
+
+            <section>
+                <table class="table">
+                    <thead><tr><th>#</th><th>Tên danh mục</th><th>Mô tả</th><th></th></tr></thead>
+                    <tbody id="categoryList">
+                    <!-- rendered by JS -->
+                    </tbody>
+                </table>
+            </section>
+
+        </main>
+    </div>
+
+    <div id="modalCat" class="modal-backdrop" style="display:none">
+        <div class="modal" role="dialog" aria-modal="true">
+            <h3>Thêm danh mục</h3>
+            <div style="margin-top:12px">
+                <label for="cname">Tên danh mục</label>
+                <input id="cname" style="width:100%;padding:8px;margin-top:6px;border:1px solid var(--admin-border);border-radius:6px" />
+            </div>
+            <div style="margin-top:12px">
+                <label for="cdesc">Mô tả</label>
+                <input id="cdesc" style="width:100%;padding:8px;margin-top:6px;border:1px solid var(--admin-border);border-radius:6px" />
+            </div>
+            <div style="margin-top:12px;text-align:right">
+                <button class="btn ghost" id="modalCatClose">Hủy</button>
+                <button class="btn" id="modalCatSave">Lưu</button>
+            </div>
+        </div>
+    </div>
+    <script src="/client/admin.js"></script>
+</body>
+</html>
