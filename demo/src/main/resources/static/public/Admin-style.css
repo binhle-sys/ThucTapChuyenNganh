@@ -132,3 +132,196 @@ html,body{height:100%;margin:0}
 .admin-main {
   margin-top: var(--admin-header-height);
 }
+/* Admin Pages Styles
+   Additional styles for admin pages beyond base admin.css
+   Used by: products.html, category.html, orders.html, users.html
+*/
+
+/* ===== Filter Tabs ===== */
+.filter-tab {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  border-radius: 6px;
+  color: var(--fg);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.filter-tab:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.filter-tab.active {
+  background: var(--accent);
+  color: #071422;
+  border-color: var(--accent);
+}
+
+/* ===== Form Fields ===== */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.input,
+textarea,
+select {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 8px;
+  color: var(--fg);
+}
+
+textarea.input {
+  font-family: inherit;
+}
+
+select.input {
+  cursor: pointer;
+}
+
+/* ===== Stock Badges ===== */
+.stock-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.stock-badge.high {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.stock-badge.medium {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+
+.stock-badge.low {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+/* ===== Table Enhancements ===== */
+table.table tbody tr {
+  transition: background 0.2s ease;
+}
+
+table.table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ===== Action Buttons ===== */
+.action-btn {
+  transition: all 0.2s ease;
+}
+
+.action-btn:not(:disabled):hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== Form Row Grid ===== */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Status Badges ===== */
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.status-badge.active,
+.status-badge.completed {
+  background: #10b981;
+}
+
+.status-badge.pending {
+  background: #3b82f6;
+}
+
+.status-badge.processing {
+  background: #f59e0b;
+}
+
+.status-badge.shipped {
+  background: #06b6d4;
+}
+
+.status-badge.cancelled {
+  background: #ef4444;
+}
+
+.status-badge.confirmed {
+  background: #8b5cf6;
+}
+
+.status-badge.unused,
+.status-badge.inactive {
+  background: #f59e0b;
+}
+
+/* ===== Role Badges ===== */
+.role-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.role-badge.admin {
+  background: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+}
+
+.role-badge.user {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 760px) {
+  .filter-tab {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .action-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}

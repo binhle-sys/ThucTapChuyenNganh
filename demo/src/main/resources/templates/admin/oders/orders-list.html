@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="https://www.ultraq.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <main class="admin-content" role="main">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+            <div>
+                <h2 style="margin:0;font-size:24px;font-weight:700">Quản lý đơn hàng</h2>
+                <div style="color:var(--muted);font-size:13px;margin-top:4px">Theo dõi và quản lý tất cả đơn hàng</div>
+            </div>
+            <div style="display:flex;gap:8px">
+                <button id="btnFilter" class="action-btn">🔍 Lọc</button>
+            </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="kpi-row" style="margin-bottom:18px">
+            <div class="kpi">
+                <div class="kpi-label">Tổng đơn hàng</div>
+                <div class="kpi-value" id="totalOrders">0</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">Chờ xác nhận</div>
+                <div class="kpi-value" id="pendingOrders">0</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">Đang xử lý</div>
+                <div class="kpi-value" id="processingOrders">0</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">Doanh thu</div>
+                <div class="kpi-value" id="totalRevenue">0đ</div>
+            </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div style="display:flex;gap:8px;margin-bottom:18px;overflow-x:auto;padding-bottom:8px">
+            <button class="filter-tab active" data-status="all">Tất cả</button>
+            <button class="filter-tab" data-status="pending">Chờ xác nhận</button>
+            <button class="filter-tab" data-status="confirmed">Đã xác nhận</button>
+            <button class="filter-tab" data-status="processing">Đang xử lý</button>
+            <button class="filter-tab" data-status="shipped">Đã gửi</button>
+            <button class="filter-tab" data-status="completed">Hoàn thành</button>
+            <button class="filter-tab" data-status="cancelled">Hủy</button>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="table-card">
+            <table class="table" aria-label="orders-list">
+                <thead>
+                <tr>
+                    <th style="width:30px"><input type="checkbox" id="selectAll" /></th>
+                    <th>Mã đơn</th>
+                    <th>Khách hàng</th>
+                    <th style="text-align:right">Tổng tiền (VNĐ)</th>
+                    <th style="text-align:center">Số lượng</th>
+                    <th style="text-align:center">Trạng thái</th>
+                    <th style="text-align:center">Ngày đặt</th>
+                    <th style="text-align:center">Hành động</th>
+                </tr>
+                </thead>
+                <tbody id="ordersBody">
+                <tr>
+                    <td><input type="checkbox" class="order-check" /></td>
+                    <td><strong>#ORD-2024001</strong></td>
+                    <td>Nguyễn Văn A</td>
+                    <td style="text-align:right">450,000</td>
+                    <td style="text-align:center">3</td>
+                    <td style="text-align:center"><span style="background:#3b82f6;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Chờ xác nhận</span></td>
+                    <td style="text-align:center">24/12/2024</td>
+                    <td style="text-align:center">
+                        <button class="action-btn view-btn" title="Xem chi tiết">👁️</button>
+                        <button class="action-btn delete-btn" title="Xóa">🗑️</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="order-check" /></td>
+                    <td><strong>#ORD-2024002</strong></td>
+                    <td>Trần Thị B</td>
+                    <td style="text-align:right">890,000</td>
+                    <td style="text-align:center">5</td>
+                    <td style="text-align:center"><span style="background:#f59e0b;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Đang xử lý</span></td>
+                    <td style="text-align:center">23/12/2024</td>
+                    <td style="text-align:center">
+                        <button class="action-btn view-btn" title="Xem chi tiết">👁️</button>
+                        <button class="action-btn delete-btn" title="Xóa">🗑️</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="order-check" /></td>
+                    <td><strong>#ORD-2024003</strong></td>
+                    <td>Lê Minh C</td>
+                    <td style="text-align:right">620,000</td>
+                    <td style="text-align:center">4</td>
+                    <td style="text-align:center"><span style="background:#06b6d4;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Đã gửi</span></td>
+                    <td style="text-align:center">22/12/2024</td>
+                    <td style="text-align:center">
+                        <button class="action-btn view-btn" title="Xem chi tiết">👁️</button>
+                        <button class="action-btn delete-btn" title="Xóa">🗑️</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="order-check" /></td>
+                    <td><strong>#ORD-2024004</strong></td>
+                    <td>Phạm Thị D</td>
+                    <td style="text-align:right">330,000</td>
+                    <td style="text-align:center">2</td>
+                    <td style="text-align:center"><span style="background:#10b981;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Hoàn thành</span></td>
+                    <td style="text-align:center">20/12/2024</td>
+                    <td style="text-align:center">
+                        <button class="action-btn view-btn" title="Xem chi tiết">👁️</button>
+                        <button class="action-btn delete-btn" title="Xóa">🗑️</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="order-check" /></td>
+                    <td><strong>#ORD-2024005</strong></td>
+                    <td>Đỗ Văn E</td>
+                    <td style="text-align:right">560,000</td>
+                    <td style="text-align:center">3</td>
+                    <td style="text-align:center"><span style="background:#ef4444;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Hủy</span></td>
+                    <td style="text-align:center">19/12/2024</td>
+                    <td style="text-align:center">
+                        <button class="action-btn view-btn" title="Xem chi tiết">👁️</button>
+                        <button class="action-btn delete-btn" title="Xóa">🗑️</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding:0 12px">
+            <div class="hint">Hiển thị 1-5 từ 5 đơn hàng</div>
+            <div style="display:flex;gap:6px">
+                <button class="action-btn" disabled>← Trước</button>
+                <button class="action-btn" style="background:var(--accent);color:#071422">1</button>
+                <button class="action-btn">Sau →</button>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

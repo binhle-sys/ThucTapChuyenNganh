@@ -7,45 +7,118 @@
 </head>
 <body>
     <div layout:fragment="content">
-        <main class="admin-content">
-            <header class="admin-header">
+        <main class="admin-content" role="main">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
                 <div>
-                    <h1 style="margin:0">Danh mục</h1>
-                    <div style="color:var(--admin-muted);font-size:13px">Quản lý danh mục sản phẩm</div>
+                    <h2 style="margin:0;font-size:24px;font-weight:700">Danh mục sản phẩm</h2>
+                    <div style="color:var(--muted);font-size:13px;margin-top:4px">Quản lý các danh mục sản phẩm của cửa hàng</div>
                 </div>
-                <div>
-                    <button class="btn" id="openCatAdd">Thêm danh mục</button>
-                </div>
-            </header>
+                <button id="btnAddCategory" class="action-btn primary">+ Thêm danh mục</button>
+            </div>
 
-            <section>
-                <table class="table">
-                    <thead><tr><th>#</th><th>Tên danh mục</th><th>Mô tả</th><th></th></tr></thead>
-                    <tbody id="categoryList">
-                    <!-- rendered by JS -->
+            <!-- Stats Row -->
+            <div class="kpi-row" style="margin-bottom:18px">
+                <div class="kpi">
+                    <div class="kpi-label">Tổng danh mục</div>
+                    <div class="kpi-value" id="totalCategories">0</div>
+                </div>
+                <div class="kpi">
+                    <div class="kpi-label">Danh mục hoạt động</div>
+                    <div class="kpi-value" id="activeCategories">0</div>
+                </div>
+                <div class="kpi">
+                    <div class="kpi-label">Danh mục không dùng</div>
+                    <div class="kpi-value" id="unusedCategories">0</div>
+                </div>
+                <div class="kpi">
+                    <div class="kpi-label">Cập nhật gần nhất</div>
+                    <div class="kpi-value" id="lastUpdate" style="font-size:14px;font-weight:600">Hôm nay</div>
+                </div>
+            </div>
+
+            <!-- Categories Table -->
+            <div class="table-card">
+                <table class="table" aria-label="categories-list">
+                    <thead>
+                    <tr>
+                        <th style="width:30px"><input type="checkbox" id="selectAll" /></th>
+                        <th>Tên danh mục</th>
+                        <th>Mô tả</th>
+                        <th style="text-align:center">Số sản phẩm</th>
+                        <th style="text-align:center">Trạng thái</th>
+                        <th style="text-align:center">Hành động</th>
+                    </tr>
+                    </thead>
+                    <tbody id="categoriesBody">
+                    <tr>
+                        <td><input type="checkbox" class="category-check" /></td>
+                        <td><strong>Sáp tóc</strong></td>
+                        <td>Các loại sáp định hình và tạo kiểu tóc</td>
+                        <td style="text-align:center"><span style="background:rgba(96,165,250,0.1);color:#60a5fa;padding:4px 8px;border-radius:4px;font-weight:600;font-size:12px">12</span></td>
+                        <td style="text-align:center"><span style="background:#10b981;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Hoạt động</span></td>
+                        <td style="text-align:center">
+                            <button class="action-btn edit-btn" title="Chỉnh sửa">✏️</button>
+                            <button class="action-btn delete-btn" title="Xóa">🗑️</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="category-check" /></td>
+                        <td><strong>Dầu gội</strong></td>
+                        <td>Các sản phẩm dầu gội chuyên dụng</td>
+                        <td style="text-align:center"><span style="background:rgba(96,165,250,0.1);color:#60a5fa;padding:4px 8px;border-radius:4px;font-weight:600;font-size:12px">8</span></td>
+                        <td style="text-align:center"><span style="background:#10b981;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Hoạt động</span></td>
+                        <td style="text-align:center">
+                            <button class="action-btn edit-btn" title="Chỉnh sửa">✏️</button>
+                            <button class="action-btn delete-btn" title="Xóa">🗑️</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="category-check" /></td>
+                        <td><strong>Dầu xả</strong></td>
+                        <td>Các loại dầu xả và dưỡng tóc</td>
+                        <td style="text-align:center"><span style="background:rgba(96,165,250,0.1);color:#60a5fa;padding:4px 8px;border-radius:4px;font-weight:600;font-size:12px">5</span></td>
+                        <td style="text-align:center"><span style="background:#10b981;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Hoạt động</span></td>
+                        <td style="text-align:center">
+                            <button class="action-btn edit-btn" title="Chỉnh sửa">✏️</button>
+                            <button class="action-btn delete-btn" title="Xóa">🗑️</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="category-check" /></td>
+                        <td><strong>Gel & Mousse</strong></td>
+                        <td>Gel, mousse và sản phẩm tạo kiểu khác</td>
+                        <td style="text-align:center"><span style="background:rgba(96,165,250,0.1);color:#60a5fa;padding:4px 8px;border-radius:4px;font-weight:600;font-size:12px">7</span></td>
+                        <td style="text-align:center"><span style="background:#10b981;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Hoạt động</span></td>
+                        <td style="text-align:center">
+                            <button class="action-btn edit-btn" title="Chỉnh sửa">✏️</button>
+                            <button class="action-btn delete-btn" title="Xóa">🗑️</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="category-check" /></td>
+                        <td><strong>Tinh dầu</strong></td>
+                        <td>Các loại tinh dầu và sản phẩm chăm sóc đặc biệt</td>
+                        <td style="text-align:center"><span style="background:rgba(96,165,250,0.1);color:#60a5fa;padding:4px 8px;border-radius:4px;font-weight:600;font-size:12px">3</span></td>
+                        <td style="text-align:center"><span style="background:#f59e0b;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Ít dùng</span></td>
+                        <td style="text-align:center">
+                            <button class="action-btn edit-btn" title="Chỉnh sửa">✏️</button>
+                            <button class="action-btn delete-btn" title="Xóa">🗑️</button>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
-            </section>
+            </div>
 
+            <!-- Pagination -->
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding:0 12px">
+                <div class="hint">Hiển thị 1-5 từ 5 danh mục</div>
+                <div style="display:flex;gap:6px">
+                    <button class="action-btn" disabled>← Trước</button>
+                    <button class="action-btn" style="background:var(--accent);color:#071422">1</button>
+                    <button class="action-btn">Sau →</button>
+                </div>
+            </div>
         </main>
-    </div>
-
-    <div id="modalCat" class="modal-backdrop" style="display:none">
-        <div class="modal" role="dialog" aria-modal="true">
-            <h3>Thêm danh mục</h3>
-            <div style="margin-top:12px">
-                <label for="cname">Tên danh mục</label>
-                <input id="cname" style="width:100%;padding:8px;margin-top:6px;border:1px solid var(--admin-border);border-radius:6px" />
-            </div>
-            <div style="margin-top:12px">
-                <label for="cdesc">Mô tả</label>
-                <input id="cdesc" style="width:100%;padding:8px;margin-top:6px;border:1px solid var(--admin-border);border-radius:6px" />
-            </div>
-            <div style="margin-top:12px;text-align:right">
-                <button class="btn ghost" id="modalCatClose">Hủy</button>
-                <button class="btn" id="modalCatSave">Lưu</button>
-            </div>
-        </div>
     </div>
     <script src="/client/admin.js"></script>
 </body>

@@ -11,6 +11,17 @@
     <link rel="stylesheet" th:href="@{/public/Admin-style.css}">
 
 </head>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const currentPath = window.location.pathname;
+      document.querySelectorAll("#sidebarNav a").forEach(link => {
+        if (link.getAttribute("href") === currentPath) {
+          link.classList.add("active");
+        }
+      });
+    });
+</script>
+
 <body class="bg-background text-foreground">
 <div class="admin-app">
     <!-- Sidebar -->
@@ -23,13 +34,14 @@
             </div>
         </div>
         <div class="group-title">Quản lý</div>
-        <nav>
-            <a href="#" class="item active">Dashboard</a>
-            <a th:href="@{/admin/product}" class="item">Sản phẩm</a>
-            <a href="#" class="item">Nhập kho</a>
-            <a href="#" class="item">Xuất kho</a>
-            <a href="#" class="item">Lịch sử</a>
+        <nav id="sidebarNav">
+            <a href="/Dashboard" class="item">Dashboard</a>
+            <a href="/admin/product" class="item">Sản phẩm</a>
+            <a href="/admin/category" class="item">Category</a>
+            <a href="/admin/Users" class="item">Người dùng</a>
+            <a href="/admin/oders" class="item">Đơn hàng</a>
         </nav>
+
     </aside>
 
     <div class="admin-main">
