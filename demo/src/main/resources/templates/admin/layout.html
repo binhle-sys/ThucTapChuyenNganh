@@ -35,11 +35,11 @@
         </div>
         <div class="group-title">Quản lý</div>
         <nav id="sidebarNav">
-            <a href="/Dashboard" class="item">Dashboard</a>
-            <a href="/admin/product" class="item">Sản phẩm</a>
-            <a href="/admin/category" class="item">Category</a>
-            <a href="/admin/Users" class="item">Người dùng</a>
-            <a href="/admin/oders" class="item">Đơn hàng</a>
+            <a th:href="@{/Dashboard}" class="item">Dashboard</a>
+            <a th:href="@{/admin/product/products-list}" class="item">Sản phẩm</a>
+            <a th:href="@{/admin/category/category-list}" class="item">Category</a>
+            <a th:href="@{/admin/Users/users-list}" class="item">Người dùng</a>
+            <a th:href="@{/admin/oders/orders-list}" class="item">Đơn hàng</a>
         </nav>
 
     </aside>

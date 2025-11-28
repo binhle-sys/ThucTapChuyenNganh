@@ -15,7 +15,7 @@ public class SecurityConfig {
         UserDetails binh= User.builder()
                 .username("binh")
                 .password("{noop}123")
-                .roles("EMPLOYEE")
+                .roles("EMPLOYEE","ADMIN")
                 .build();
         return new InMemoryUserDetailsManager(binh);
     }
@@ -24,6 +24,8 @@ public class SecurityConfig {
         http.authorizeHttpRequests(configurer ->
                         configurer
                                 .requestMatchers("/css/**","/JS/**","/images/**","/vendor/**", "/public/**").permitAll()
+                                .requestMatchers("admin/**").hasRole("ADMIN")
+                                .requestMatchers("user/**").hasAnyRole("USER", "ADMIN")
                                 .requestMatchers("/login").permitAll()
                                 .anyRequest().authenticated())
                 .formLogin(

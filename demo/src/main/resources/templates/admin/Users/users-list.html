@@ -1,144 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:layout="https://www.ultraq.nz/thymeleaf/layout"
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{admin/layout}">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .product-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 6px;
+            display: block;
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
 <div layout:fragment="content">
-<main class="admin-content" role="main">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
-        <div>
-            <h2 style="margin:0;font-size:24px;font-weight:700">Quản lý người dùng</h2>
-            <div style="color:var(--muted);font-size:13px;margin-top:4px">Quản lý thông tin và quyền truy cập của người dùng</div>
-        </div>
-        <button id="btnAddUser" class="action-btn primary">+ Thêm người dùng</button>
-    </div>
+    <a class="btn btn-success mb-3">+ Thêm thể loại</a>
+    <table class="table table-dark">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên khách hàng</th>
+            <th>email</th>
+            <th>Số điện thoại</th>
+            <th>Trạng thái</th>
+        </tr>
+        </thead>
+        <tbody>
 
-    <!-- Stats Row -->
-    <div class="kpi-row" style="margin-bottom:18px">
-        <div class="kpi">
-            <div class="kpi-label">Tổng người dùng</div>
-            <div class="kpi-value" id="totalUsers">0</div>
-        </div>
-        <div class="kpi">
-            <div class="kpi-label">Người dùng hoạt động</div>
-            <div class="kpi-value" id="activeUsers">0</div>
-        </div>
-        <div class="kpi">
-            <div class="kpi-label">Quản trị viên</div>
-            <div class="kpi-value" id="adminCount">0</div>
-        </div>
-        <div class="kpi">
-            <div class="kpi-label">Được tạo hôm nay</div>
-            <div class="kpi-value" id="todayUsers">0</div>
-        </div>
-    </div>
+        <tr th:each="user : ${users}">
+            <th scope="row" th:text="${user.id}"></th>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.sdt}"></td>
+            <td class="table-active"
+                th:text="${user.status == 1 ? 'Đang hoạt động' : 'Không hoạt động'}">
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm">Sửa</a>
 
-    <!-- Filter Tabs -->
-    <div style="display:flex;gap:8px;margin-bottom:18px;overflow-x:auto;padding-bottom:8px">
-        <button class="filter-tab active" data-role="all">Tất cả</button>
-        <button class="filter-tab" data-role="admin">Quản trị viên</button>
-        <button class="filter-tab" data-role="user">Người dùng</button>
-        <button class="filter-tab" data-role="inactive">Không hoạt động</button>
-    </div>
-
-    <!-- Users Table -->
-    <div class="table-card">
-        <table class="table" aria-label="users-list">
-            <thead>
-            <tr>
-                <th style="width:30px"><input type="checkbox" id="selectAll" /></th>
-                <th>Tên người dùng</th>
-                <th>Email</th>
-                <th>Số điện thoại</th>
-                <th style="text-align:center">Vai trò</th>
-                <th style="text-align:center">Trạng thái</th>
-                <th style="text-align:center">Ngày tạo</th>
-                <th style="text-align:center">Hành động</th>
-            </tr>
-            </thead>
-            <tbody id="usersBody">
-            <tr>
-                <td><input type="checkbox" class="user-check" /></td>
-                <td><strong>Nguyễn Văn A</strong></td>
-                <td>nguyena@email.com</td>
-                <td>0123456789</td>
-                <td style="text-align:center"><span style="background:rgba(139,92,246,0.1);color:#8b5cf6;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Quản trị viên</span></td>
-                <td style="text-align:center"><span style="background:#10b981;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Hoạt động</span></td>
-                <td style="text-align:center">01/12/2024</td>
-                <td style="text-align:center">
-                    <button class="action-btn edit-btn" title="Chỉnh sửa">✏️</button>
-                    <button class="action-btn delete-btn" title="Xóa">🗑️</button>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="user-check" /></td>
-                <td><strong>Trần Thị B</strong></td>
-                <td>tranb@email.com</td>
-                <td>0987654321</td>
-                <td style="text-align:center"><span style="background:rgba(59,130,246,0.1);color:#3b82f6;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Người dùng</span></td>
-                <td style="text-align:center"><span style="background:#10b981;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Hoạt động</span></td>
-                <td style="text-align:center">15/11/2024</td>
-                <td style="text-align:center">
-                    <button class="action-btn edit-btn" title="Chỉnh sửa">✏️</button>
-                    <button class="action-btn delete-btn" title="Xóa">🗑️</button>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="user-check" /></td>
-                <td><strong>Lê Minh C</strong></td>
-                <td>leminc@email.com</td>
-                <td>0912345678</td>
-                <td style="text-align:center"><span style="background:rgba(59,130,246,0.1);color:#3b82f6;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Người dùng</span></td>
-                <td style="text-align:center"><span style="background:#10b981;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Hoạt động</span></td>
-                <td style="text-align:center">20/10/2024</td>
-                <td style="text-align:center">
-                    <button class="action-btn edit-btn" title="Chỉnh sửa">✏️</button>
-                    <button class="action-btn delete-btn" title="Xóa">🗑️</button>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="user-check" /></td>
-                <td><strong>Phạm Thị D</strong></td>
-                <td>phamd@email.com</td>
-                <td>0876543210</td>
-                <td style="text-align:center"><span style="background:rgba(59,130,246,0.1);color:#3b82f6;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Người dùng</span></td>
-                <td style="text-align:center"><span style="background:#ef4444;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Không hoạt động</span></td>
-                <td style="text-align:center">05/09/2024</td>
-                <td style="text-align:center">
-                    <button class="action-btn edit-btn" title="Chỉnh sửa">✏️</button>
-                    <button class="action-btn delete-btn" title="Xóa">🗑️</button>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" class="user-check" /></td>
-                <td><strong>Đỗ Văn E</strong></td>
-                <td>dove@email.com</td>
-                <td>0945678901</td>
-                <td style="text-align:center"><span style="background:rgba(59,130,246,0.1);color:#3b82f6;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Người dùng</span></td>
-                <td style="text-align:center"><span style="background:#10b981;color:white;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600">Hoạt động</span></td>
-                <td style="text-align:center">18/08/2024</td>
-                <td style="text-align:center">
-                    <button class="action-btn edit-btn" title="Chỉnh sửa">✏️</button>
-                    <button class="action-btn delete-btn" title="Xóa">🗑️</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Pagination -->
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding:0 12px">
-        <div class="hint">Hiển thị 1-5 từ 5 người dùng</div>
-        <div style="display:flex;gap:6px">
-            <button class="action-btn" disabled>← Trước</button>
-            <button class="action-btn" style="background:var(--accent);color:#071422">1</button>
-            <button class="action-btn">Sau →</button>
-        </div>
-    </div>
-</main>
+                <a class="btn btn-danger btn-sm">Xóa</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
